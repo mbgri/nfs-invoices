@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F4E5F">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>NFS Invoices</title>
+<style>
+  :root { --acc:#1F4E5F; --bg:#f4f6f7; --card:#fff; --line:#d9dfe2; --muted:#66727a; --bad:#b3261e; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:16px/1.4 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; background:var(--bg); color:#1b1f22; }
+  #app { max-width:760px; margin:0 auto; padding:12px 12px 120px; }
+  header { display:flex; align-items:center; justify-content:space-between; gap:8px; margin:4px 0 12px; }
+  header h1 { font-size:20px; margin:0; color:var(--acc); flex:1; text-align:center; }
+  button { font:inherit; border:1px solid var(--line); background:#fff; color:#1b1f22; border-radius:10px; padding:10px 14px; cursor:pointer; min-height:44px; }
+  button.primary { background:var(--acc); color:#fff; border-color:var(--acc); }
+  button.big { width:100%; font-size:18px; padding:14px; }
+  button.ghost { background:transparent; border-color:transparent; color:var(--acc); }
+  button.del { color:var(--bad); min-width:44px; }
+  .actions { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; } .actions .big { flex-basis:100%; }
+  .list { list-style:none; padding:0; margin:0; }
+  .list li { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; }
+  .amt { font-weight:600; } .tag { background:#e7eef0; color:var(--acc); font-size:12px; border-radius:6px; padding:2px 6px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px; margin-bottom:12px; }
+  .card h3 { margin:0 0 8px; font-size:16px; color:var(--acc); }
+  label { display:block; font-size:13px; color:var(--muted); margin:8px 0; }
+  input, textarea, select { display:block; width:100%; font:inherit; color:#1b1f22; padding:10px; border:1px solid var(--line); border-radius:8px; margin-top:4px; background:#fff; }
+  input[type=color] { height:44px; padding:4px; } input[type=checkbox] { display:inline; width:auto; }
+  .row { display:flex; gap:8px; align-items:flex-end; } .row > * { flex:1; min-width:0; } .row .grow { flex:2; } .row .del { flex:0; }
+  .row.end { align-items:flex-end; } .row > label { margin:6px 0; }
+  .line { border-top:1px dashed var(--line); padding-top:8px; margin-top:8px; }
+  .sub { font-weight:600; font-size:14px; margin:14px 0 4px; }
+  .tot { margin-top:12px; border-top:1px solid var(--line); padding-top:8px; } .tot div { display:flex; justify-content:space-between; padding:3px 0; }
+  .tot .grand { font-size:18px; color:var(--acc); }
+  .private { font-size:13px; background:#fff7e0; border:1px solid #f0dc9c; border-radius:8px; padding:8px; margin-top:8px; }
+  .muted { color:var(--muted); } .small { font-size:13px; } .bad { color:var(--bad); }
+  .warn { background:#fff4f2; border:1px solid #f3c5bf; border-radius:8px; padding:8px; font-size:14px; margin:8px 0; } .warn ul { padding-left:18px; margin:6px 0; }
+  .pages { display:flex; flex-wrap:wrap; gap:6px; } .chk { display:inline-flex; gap:4px; align-items:center; border:1px solid var(--line); border-radius:8px; padding:6px 10px; color:#1b1f22; margin:0; }
+  .bar { position:fixed; left:0; right:0; bottom:0; display:flex; gap:8px; justify-content:center; padding:10px 12px calc(10px + env(safe-area-inset-bottom)); background:#ffffffee; border-top:1px solid var(--line); }
+  .bar button { flex:1; max-width:240px; }
+  #preview .pg { width:100%; border:1px solid var(--line); margin:8px 0; background:#fff; box-shadow:0 1px 4px #0001; }
+  .toast { position:fixed; left:50%; transform:translateX(-50%); bottom:90px; background:#1b1f22; color:#fff; padding:10px 14px; border-radius:10px; max-width:90%; z-index:20; }
+  .toast.bad { background:var(--bad); }
+  #busy { position:fixed; inset:0; background:#0006; display:flex; align-items:center; justify-content:center; z-index:30; } #busy[hidden] { display:none; }
+  #busy span { background:#fff; padding:16px 20px; border-radius:12px; }
+</style>
+</head>
+<body>
+<div id="app"><p class="muted">Loading…</p></div>
+<div id="busy" hidden><span>Working…</span></div>
+<script type="module" src="app.bundle.js"></script>
+</body>
+</html>
